@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  width: 8%;
+}
+
+.App-header {
+  background-color: rgba(0,0,0,.32);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: auto;
+  overflow: hidden;
+}
+
+.App-link {
+  color: #09d3ac;
+}
