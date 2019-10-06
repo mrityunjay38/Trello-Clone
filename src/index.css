@@ -5,12 +5,39 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url('./data/img/background.png') no-repeat;
-  background-size: cover;
-  background-position: 0px -800px;
+  background: #f4f5f7;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style: none;
+  width: 23.5%;
+  padding: 0;
+  margin: 0 2% 8px 0;
+  transform: translate(0);
+}
+
+/* Boards */
+
+.board-tile {
+  background-color: #97a0af;
+  background-size: cover;
+  background-position: 50%;
+  color: #fff;
+  line-height: 20px;
+  padding: 2em;
+  position: relative;
+  text-decoration: none;
+  border-radius: 3px;
+  display: block;
+  text-align: left;
 }
