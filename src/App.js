@@ -2,7 +2,8 @@ import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import logo from './data/img/logo.png';
 import './App.css';
-import Boards from "./components/boards"
+import Boards from "./components/boards";
+import Board from "./components/board";
 
 function App() {
   return (
@@ -11,11 +12,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         </header>
-        <section className="Boards-list">
-        <ul>
+        <Switch>
         <Route path="/" exact component={Boards}/>
-        </ul>
-        </section>
+        <Route path="/b/:boardId/:boardName" component={Board}/>
+        </Switch>
     </div>
     </Router>
   );
