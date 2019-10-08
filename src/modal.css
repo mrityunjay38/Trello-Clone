@@ -25,3 +25,19 @@
   z-index: 25;
   padding: 2em;
 }
+
+.close-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50px;
+}
+
+.close-btn:hover {
+  background: #ebecf0;
+}

@@ -17,6 +17,7 @@ code {
 ul {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 li {
@@ -25,6 +26,7 @@ li {
   padding: 0;
   margin: 0 2% 8px 0;
   transform: translate(0);
+  margin-top: 5em;
 }
 
 /* Boards */
