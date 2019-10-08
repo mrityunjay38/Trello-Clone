@@ -4,6 +4,7 @@ import logo from './data/img/logo.png';
 import './App.css';
 import Boards from "./components/boards";
 import Board from "./components/board";
+import cardModal from "./components/cardModal";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Switch>
         <Route path="/" exact component={Boards}/>
         <Route path="/b/:boardId/:boardName" component={Board}/>
+        <Route path="/c/:cardId/:cardName" component={cardModal}/>
         </Switch>
     </div>
     </Router>

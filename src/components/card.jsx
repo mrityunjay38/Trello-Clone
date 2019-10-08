@@ -11,7 +11,7 @@ class Card extends Component {
     }
 
     showModal = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         this.setState({
             cardOpen: !this.state.cardOpen,
             className: "modal-visible"
