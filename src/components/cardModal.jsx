@@ -11,51 +11,36 @@ class cardModal extends Component {
         boardName: "",
         boardLists : [],
         cardsInfo : [],
-        cardOpen: false,
         className: "modal-hidden",
-        display: "flex"
     }
 
     async componentDidMount(){
         try{
-            const board = await fetch(`https://api.trello.com/1/cards/${this.props.match.params.cardId}/board?key=${KEY}&token=${TOKEN}`);
-            const boardJson = await board.json();
 
-            const cardInList = await fetch(`https://api.trello.com/1/cards/${this.props.match.params.cardId}/list?&key=${KEY}&token=${TOKEN}`);
-            const cardInListJson = await cardInList.json(); 
+            const boardId = await fetch(`https://api.trello.com/1/cards/${this.props.match.params.cardId}/board?fields=id,url,name&key=${KEY}&token=${TOKEN}`);
+            const boardIdJson = await boardId.json();
 
-            const lists = await fetch(`https://api.trello.com/1/boards/${boardJson.id}/lists?key=${KEY}&token=${TOKEN}`);
+            const cardIdInList = await fetch(`https://api.trello.com/1/cards/${this.props.match.params.cardId}/list?fields=id&key=${KEY}&token=${TOKEN}`);
+            const cardIdInListJson = await cardIdInList.json();
+
+            const lists = await fetch(`https://api.trello.com/1/boards/${boardIdJson.id}/lists?key=${KEY}&token=${TOKEN}`);
             const listsJson = await lists.json();
 
-            const cards = await fetch(`https://api.trello.com/1/lists/${cardInListJson.id}/cards?key=${KEY}&token=${TOKEN}`);
+            const cards = await fetch(`https://api.trello.com/1/lists/${cardIdInListJson.id}/cards?key=${KEY}&token=${TOKEN}`);
             const cardsJson = await cards.json();
             const cardSelected = cardsJson.filter( card => card.shortLink == this.props.match.params.cardId);
 
-            // cardSelected[0]["boardShortId"] = boardJson.shortLink;
-            cardSelected[0]["boardUrl"] = boardJson.url.replace("https://trello.com",""); 
+            cardSelected[0]["boardUrl"] = boardIdJson.url.replace("https://trello.com",""); 
 
             this.setState({
-                boardName: boardJson.name,
+                boardName: boardIdJson.name,
                 boardLists : listsJson,
-                // cardsInfo : cardsJson,
                 cardsInfo : cardSelected[0]
             });
         }
         catch (err){
             console.log(err);
         }
-    }
-
-    showModal = (e) => {
-        // e.preventDefault();
-        this.setState({
-            cardOpen: !this.state.cardOpen,
-            className: "modal-visible"
-        });
-    }
-
-    closeModal = () => {
-        console.log("Close clicked");
     }
 
     render(){
@@ -72,12 +57,13 @@ class cardModal extends Component {
                     <h2>{list.name}</h2>
                     </div>
                     <Cards listId={list.id}/>
+                    <button className="addNewCard" onClick={this.addNewCard}>&#43; Add another card</button>
                     </div>
                     )
                 } )
             }
             </div>
-            <Modal cardInfo={this.state.cardsInfo} className={this.state.className} onClick={this.closeModal}/>
+            <Modal cardInfo={this.state.cardsInfo} className={this.state.className}/>
             </section>
         );
     }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Card from "./card";
 import "../Cards.css";
+import AddNewCard from "./addNewCard";
 
 const KEY = "4889527730924708de702aa5a0633ee7";
 const TOKEN =
@@ -25,13 +26,23 @@ class Cards extends Component {
     }
   }
 
+  setTitle = newCard => {
+    console.log(newCard);
+    this.setState({
+      cards : [...this.state.cards,newCard]
+    });
+  }
+
   render() {
     return (
+      <React.Fragment>
       <div className="cards">
         {this.state.cards.map(card => {
           return <Card key={card.id} cardInfo={card} />;
         })}
       </div>
+      <AddNewCard newCard={this.setTitle}/>
+      </React.Fragment>
     );
   }
 }

@@ -7,7 +7,8 @@ class Modal extends Component {
 
     state = {
         close: "flex",
-        redirect : false
+        redirect : false,
+        cardEditable : "false"
     }
 
     closeModal = () => {
@@ -16,22 +17,25 @@ class Modal extends Component {
             close : "none",
             redirect : true
         });
-        // return this.props.history.push(this.props.cardInfo.boardUrl);
-        // console.log("/b/" + this.props.idBoard);
-        // return <Redirect to={{pathname: this.props.cardInfo.boardUrl}}/>
+    }
+
+    makeEditable = () => {
+        this.setState({
+            cardEditable : "true"
+        });
     }
 
     render(){
-        // console.log(this.props.cardInfo);
+        console.log("culprit" + this.props.cardInfo);
         return (
             <React.Fragment>
-            <div style={{display: this.state.close}} className="modal-overlay" onClick={this.closeModal}>
-            <div className="modal-view">
-            <span className="close-btn">&times;</span>
+            <div style={{display: this.state.close}} className="modal-overlay" onClick={this.closeModal}/>
+            <div contentEditable={this.state.cardEditable} className="modal-view" onClick={this.makeEditable}>
+            <span className="close-btn" onClick={this.closeModal}>&times;</span>
             <h2>{this.props.cardInfo.name}</h2>
             <p>{this.props.cardInfo.desc}</p>
             </div>
-            </div>
+            
             {this.state.redirect ? <Redirect to={this.props.cardInfo.boardUrl}/> : null}
             </React.Fragment>
         );

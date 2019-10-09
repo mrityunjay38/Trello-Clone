@@ -20,7 +20,7 @@
   display: block;
   margin: 48px 0 80px;
   overflow: hidden;
-  position: relative;
+  position: absolute;
   width: 60%;
   z-index: 25;
   padding: 2em;

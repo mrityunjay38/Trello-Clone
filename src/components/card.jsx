@@ -7,7 +7,8 @@ class Card extends Component {
     state = {
         cardOpen: false,
         className: "modal-hidden",
-        display: "flex"
+        display: "flex",
+        // cardEditable : "false"
     }
 
     showModal = (e) => {
@@ -25,6 +26,7 @@ class Card extends Component {
         });
     }
 
+
     render(){
         // console.log(this.props);
         return (
@@ -32,6 +34,7 @@ class Card extends Component {
             <Link to={this.props.cardInfo.url.replace("https://trello.com","")} className="card" onClick={this.showModal}>
             <span className="card-name">{this.props.cardInfo.name}</span>
             <span className="badge"/>
+            <span className="editCard">&#9998;</span>
             </Link>
             {this.state.cardOpen ? (<Modal cardInfo={this.props.cardInfo} className={this.state.className} onClick={this.closeModal}/>): null}
             </React.Fragment>

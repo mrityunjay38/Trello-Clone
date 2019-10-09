@@ -26,6 +26,10 @@
   color: #172b4d;
 }
 
+.card-name {
+  width: 12em;
+}
+
 .badge::before {
   content: "\E91D";
 }

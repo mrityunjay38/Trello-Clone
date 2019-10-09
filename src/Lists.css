@@ -1,6 +1,9 @@
 .board-lists {
     text-align: left;
     padding: 0em 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .lists {
@@ -34,4 +37,45 @@
     padding: 0em 1em;
     overflow: hidden;
     overflow-wrap: break-word;
+}
+
+.addNewCard {
+    flex: 0 0 auto;
+    min-width: 15em;
+    min-height: 40px;
+    background: transparent;
+    border: none;
+    font-size: 1em;
+    padding: 0em 1em;
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+.addNewCard:focus {
+    outline: none;
+}
+
+.addNewCard:hover {
+    background: #e1e3e8;
+    border-radius:0 0 5px 5px;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+.editCard {
+    opacity: 0;
+    position: absolute;
+    top:0;
+    right: 0;
+    padding: 0.5em;
+    transform: rotate(90deg);
+}
+
+.editCard:hover {
+    opacity: 1;
+}
+
+textarea {
+    position: relative;
+    top: -1;
 }
