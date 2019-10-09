@@ -43,6 +43,7 @@ class cardModal extends Component {
         }
     }
 
+
     render(){
         // console.log(this.state.cardsInfo);
         return (

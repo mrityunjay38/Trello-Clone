@@ -28,14 +28,6 @@ class Board extends Component {
     }
   }
 
-  handleChange = e => {
-    this.setState({ textarea: e.target.value });
-  };
-
-  addNewCard = () => {
-    console.log(this.state.textarea);
-  };
-
   render() {
     // console.log(this.props.match);
     return (

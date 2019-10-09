@@ -26,16 +26,15 @@ class Modal extends Component {
     }
 
     render(){
-        console.log("culprit" + this.props.cardInfo);
+        // console.log(this.props.cardInfo);
         return (
             <React.Fragment>
             <div style={{display: this.state.close}} className="modal-overlay" onClick={this.closeModal}/>
             <div contentEditable={this.state.cardEditable} className="modal-view" onClick={this.makeEditable}>
             <span className="close-btn" onClick={this.closeModal}>&times;</span>
-            <h2>{this.props.cardInfo.name}</h2>
+            <h2 onChange={this.handleHeading}>{this.props.cardInfo.name}</h2>
             <p>{this.props.cardInfo.desc}</p>
             </div>
-            
             {this.state.redirect ? <Redirect to={this.props.cardInfo.boardUrl}/> : null}
             </React.Fragment>
         );
