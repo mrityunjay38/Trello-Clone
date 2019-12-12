@@ -43,6 +43,15 @@ class cardModal extends Component {
         }
     }
 
+    changedHeading = async (newHeading) =>{
+        console.log(newHeading);
+        try {
+            await fetch(`https://api.trello.com/1/cards/${newHeading.cardId}?name=${newHeading.heading}&key=${KEY}&token=${TOKEN}`,{method : 'PUT'});
+        }
+        catch (err) {
+            console.log("changedHeading=" + err);
+        }
+    }
 
     render(){
         // console.log(this.state.cardsInfo);
@@ -64,7 +73,7 @@ class cardModal extends Component {
                 } )
             }
             </div>
-            <Modal cardInfo={this.state.cardsInfo} className={this.state.className}/>
+            <Modal addHeading={this.changedHeading} cardInfo={this.state.cardsInfo} className={this.state.className}/>
             </section>
         );
     }

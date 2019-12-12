@@ -8,11 +8,12 @@ class Modal extends Component {
     state = {
         close: "flex",
         redirect : false,
-        cardEditable : "false"
+        cardEditable : "false",
+        valueH2 : ""
     }
 
     closeModal = () => {
-        console.log(this.props.cardInfo.boardUrl);
+        this.props.addHeading({heading: this.state.valueH2, cardId: this.props.cardInfo.shortLink});
         this.setState({
             close : "none",
             redirect : true
@@ -25,6 +26,19 @@ class Modal extends Component {
         });
     }
 
+    // handleHeading = (e) => {
+    //     this.setState({
+    //         valueH2 : e.target.innerText
+    //     });
+    // }
+
+    handleHeading = (e) => {
+        this.setState({
+            valueH2 : e.target.value
+        });
+    }
+
+
     render(){
         // console.log(this.props.cardInfo);
         return (
@@ -32,7 +46,7 @@ class Modal extends Component {
             <div style={{display: this.state.close}} className="modal-overlay" onClick={this.closeModal}/>
             <div contentEditable={this.state.cardEditable} className="modal-view" onClick={this.makeEditable}>
             <span className="close-btn" onClick={this.closeModal}>&times;</span>
-            <h2 onChange={this.handleHeading}>{this.props.cardInfo.name}</h2>
+            <textarea cols="50"  value={this.props.cardInfo.name} onChange={this.handleHeading}>{this.props.cardInfo.name}</textarea>
             <p>{this.props.cardInfo.desc}</p>
             </div>
             {this.state.redirect ? <Redirect to={this.props.cardInfo.boardUrl}/> : null}
